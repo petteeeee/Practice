@@ -1,0 +1,165 @@
+// ConsoleApplication13.cpp : Defines the entry point for the console application.
+//
+#include "stdafx.h"
+//
+//the issue I'm having is: the program doesnt seem to want to run the functions, it instead 
+//prints out the base text only. Is there a solution to this? Should i put the functions
+//in if else statements? I'm going to try this after I send this email. Also is there a way
+//for me to make this more efficent? I feel like this program is kind of unwiedly and gross. 
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+#include <cstdlib>
+#include <time.h>
+#include <cstring>
+// declaring functions
+//declaring variables for use in battle function and in main function
+int health = 40;
+int newHealth, damage;
+int answer1, answer2, answer3;
+int main()
+ {
+  cout << "Cold. \nDarkness. \nPain. \n";
+  cout << "Slowly your senses return to you. \nYour head aches, and you squint your eyes as the room swims into focus.\n ";
+  cout << "You're lying on the floor of a small room made entirely of smooth stone.\n";
+  cout << "A small sliver of light slips out from beneath a door directly in front of you.\n";
+  cout << "Do you stand up?\n1: Yes\n2: No\n";
+  cin >> answer1;
+  //choice set 1--------------------------------------------
+  if (answer1 == 1) {
+   cout << "You rise to your feet and brush yourself off. \nThats better.\n";
+  }
+  else if (answer1 == 2) {
+   cout << "You continue lying on the floor.\n";
+   do
+   {
+    cout << "Do you want to stand up?\n1: Yes\n2: No\n";
+    cin >> answer1;
+   } while (answer1 == 2);
+   cout << "You rise to your feet and brush yourself off. \nThats better.\n";
+  }
+  else {
+   cout << "That is not a vaild value.\n";
+  }
+  cout << "You stretch your aching muscles, taking in the room once again.\n";
+  cout << "1: Examine the walls\n2: Head towards the door\n";
+  cin >> answer2;
+  //choice set 2 -------------------------------------
+  if (answer2 == 1) {
+   do
+   {
+    cout << "You approach the wall and run your fingers against its smooth surface.\nIt appears that this room has been hewn from pure stone, yet no tool marks mar is surface.\n What would you like to do?\n";
+    cout << "1: Examine the walls\n2: Head towards the door\n";
+    cin >> answer2;
+   } while (answer2 == 1);
+  }
+  else if (answer2 == 2) {
+   do {
+    cout << "You quickly make your way to the door. It's splintered wooden surface will, most likely leave you with a few splinters if you touch it.\n What would you like to do?\n";
+    cout << "1: Examine the walls\n2: Try the door handle\n3: Run your hands along the door\n";
+    break;
+   } while (answer2 == 2);
+  }
+  cin >> answer3;
+  //choice set 3--------------------------------------
+  if (answer3 == 1) {
+   do
+   {
+    cout << "You approach the wall and run your fingers against its smooth surface.\nIt appears that this room has been hewn from pure stone, yet no tool marks mar is surface.\n What would you like to do?\n";
+    cout << "1: Examine the walls\n2: Head towards the door\n";
+    cin >> answer3;
+   } while (answer3 == 1);
+  }
+  else if (answer3 == 2) {
+   do {
+    cout << "You jiggle the door handle and, to your suprise, it slowly creaks open.";
+    cin >> answer3;
+   } while (answer3 == 2);
+  }
+  else if (answer3 == 3);
+  {
+   do {
+    cout << "You run your hands along the door's rough surface. You have more than a few splinters\n What would you like to do?\n";
+    cout << "1: Examine the walls\n2:Try the door handle\n3:Run your hands along the door\n";
+    cin >> answer3;
+   } while (answer3 == 3);
+  }
+  //choice set 4----------------------------------------
+  cout << "Would you like to proceed? 1: Yes 2: No";
+  return 0;
+}
+
+//this is the orignal code for the first iteration of the game.
+//it was having logical errors where the player would input '2' then it would run the code that was associated with the previous value of '2'. I figured using functions would be a way
+//to by pass this problem but it isnt working, unfortunately
+/*int main()
+{
+ cout << "Cold. \nDarkness. \nPain. \n";
+ cout << "Slowly your senses return to you. \nYour head aches, and you squint your eyes as the room swims into focus.\n ";
+ cout << "You're lying on the floor of a small room made entirely of smooth stone.\n";
+ cout << "A small sliver of light slips out from beneath a door directly in front of you.\n";
+ cout << "Do you stand up?\n1: Yes\n2: No\n";
+ cin >> answer;
+ //choice set 1--------------------------------------------
+ if (answer == 1) {
+  cout << "You rise to your feet and brush yourself off. \nThats better.\n";
+ }
+ else if (answer == 2) {
+  cout << "You continue lying on the floor.\n";
+  do
+  {
+   cout << "Do you want to stand up?\n1: Yes\n2: No\n";
+   cin >> answer;
+  } while (answer == 2);
+  cout << "You rise to your feet and brush yourself off. \nThats better.\n";
+ }
+ else {
+  cout << "That is not a vaild value.\n";
+ }
+ cout << "You stretch your aching muscles, taking in the room once again.\n";
+ cout << "1: Examine the walls\n2: Head towards the door\n";
+ cin >> answer;
+ //choice set 2 -------------------------------------
+ if (answer == 1) {
+  do
+  {
+   cout << "You approach the wall and run your fingers against its smooth surface.\nIt appears that this room has been hewn from pure stone, yet no tool marks mar is surface.\n What would you like to do?\n";
+   cout << "1: Examine the walls\n2: Head towards the door\n";
+   cin >> answer;
+  } while (answer == 1);
+ }
+ else if (answer == 2) {
+  do {
+   cout << "You quickly make your way to the door. It's splintered wooden surface will, most likely leave you with a few splinters if you touch it.\n What would you like to do?\n";
+   cout << "1: Examine the walls\n2: Try the door handle\n3: Run your hands along the door\n";
+   cin >> answer;
+  } while (answer == 2);
+ }
+ //choice set 3--------------------------------------
+ if (answer == 1) {
+  do
+  {
+   cout << "You approach the wall and run your fingers against its smooth surface.\nIt appears that this room has been hewn from pure stone, yet no tool marks mar is surface.\n What would you like to do?\n";
+   cout << "1: Examine the walls\n2: Head towards the door\n";
+   cin >> answer;
+  } while (answer == 1);
+ }
+ else if (answer == 2) {
+  do {
+   cout << "You jiggle the door handle and, to your suprise, it slowly creaks open.";
+   cin >> answer;
+  } while (answer == 2);
+ }
+ else if (answer == 3);
+ {
+  do {
+   cout << "You run your hands along the door's rough surface. You have more than a few splinters\n What would you like to do?\n";
+   cout << "1: Examine the walls\n2:Try the door handle\n3:Run your hands along the door\n";
+   cin >> answer;
+  } while (answer == 3);
+ }
+ //choice set 4----------------------------------------
+ cout << "Would you like to proceed? 1: Yes 2: No";
+
+ return 0;
+}*/
