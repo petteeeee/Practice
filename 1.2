@@ -1,0 +1,818 @@
+// ConsoleApplication22.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+#include <cstdlib>
+#include <time.h>
+#include <cstring>
+#include <stdio.h> 
+
+///////////////////////////////////global integers////////////////////////////////////////////////////
+int damage;
+int health = 20;
+int playerHealth = 100;
+int answer;
+int t;
+//////////////////////////////////protypes////////////////////////////////////////////////////////////
+void choice21();
+void choice22();
+void choice32();
+
+
+void texture1()
+{
+
+	if (health < 3) { cout << "The monster stumbles and drops to the floor with a squelch, still breathing." << endl << "A couple more hits should end this." << endl; }
+
+	else if (health < 10) { cout << "The monster is bloodied." << endl; }
+	else if (health < 15) { cout << "The monster lets out a blood curdling howl." << endl << "Its breath stinks of rot. You brace for its attack." << endl; }
+}
+
+void battle1()
+
+{
+
+	do {
+		srand(time(0));
+		//player atttack
+		damage = 1 + (rand() % 6);
+		cout << " You do " << 1 + (rand() % 6) << " damage!" << endl;
+		if (health <= 0) cout << "One final blow to the head silences it." << endl << "You've killed the monster!";
+		if (health <= 0) break;
+		if (playerHealth <= 0) cout << "The monster slashes you across the throat. You bleed out on the floor."<< endl << "You have died.";
+		if (playerHealth <= 0) break;
+		health = health - damage;
+		texture1();
+		//monster attack 
+		cout << "The monster swings at you with its massive claws!" << endl << "It does " << damage << " damage!" << endl;
+		playerHealth = playerHealth - damage;
+		cout << "You have " << playerHealth << " health left." << endl;
+		cout << "Would you like to attack again?" << endl << "y/n" << endl;
+		cin >> answer;
+
+	} while (answer == 'y' || health > 0 || playerHealth > 0);
+	
+	
+	
+}
+
+void choice1()
+{
+	cout << "Cold. \nDarkness. \nPain. \n";
+
+	system("pause");
+
+	cout << "Slowly your senses return to you. \nYour head aches, and you squint your eyes as the room swims into focus.\n ";
+
+	system("pause");
+
+	cout << "You're lying on the floor of a small room made entirely of smooth stone.\n";
+
+	system("pause");
+
+	cout << "A small sliver of light slips out from beneath a door directly in front of you.\n";
+
+	system("pause");
+
+	cout << "Do you stand up?\ny/n";
+
+	do {
+		cout << "You lay on the floor, contemplating whether or not to get up.\n Do you stand up?" << endl << "1:y 2:n";
+		cin >> answer;
+	} while (answer == 2);
+}
+
+void choice2()
+{
+	cout << "You stretch your aching muscles, taking in the room once again.\n";
+
+	cout << "1: Examine the walls\n2: Head towards the door\n";
+
+}
+//if answer = 1
+void choice21()
+{
+	cout << "You approach the wall and run your fingers against its smooth surface.\nIt appears that this room has been hewn from pure stone, yet no tool marks mar is surface.\n What would you like to do?\n";
+
+	cout << "1: Examine the walls\n2: Head towards the door\n";
+
+}
+//if answer = 2
+void choice22()
+{
+	cout << "You quickly make your way to the door.\n It's splintered wooden surface will, most likely leave you with a few splinters if you touch it.\n What would you like to do?\n";
+
+	cout << "1: Examine the walls\n2: Try the door handle\n3: Run your hands along the door\n";
+
+}
+void choice23()
+{
+	cout << "You jiggle the door handle and, to your suprise, the door swings open.";
+}
+
+//new choice 
+void choice3()
+{
+	
+		if (answer == 1) {
+			cin >> answer;
+			if (answer = 1) choice21;
+			else if (answer == 2) choice22;
+		}
+	
+}
+void choice32()
+{
+	cout << "You rub your hands against the door." << endl << "You have more than a few splinters. Try the door handle?\n 1: Yes 2: No";
+	cin >> answer;
+	if (answer == 1) cout << "You jiggle the door handle and, to your suprise, the door swings open";
+	else if (answer ==2)
+		do {
+			cout << "You rub your hands against the door" << endl << "You have more than a few splinters. Try the door handle?\n 1: Yes 2: No";
+			cin >> answer;
+		} while (answer == 2);
+		if (answer == 1) cout << "You jiggle the door handle and, to your suprise, the door swings open" << endl << "Would you like to proceed?\n 1: Yes 2: No ";
+		cin >> answer;
+		
+		;
+}
+void choice4()
+{
+	cout << "With a deep breath, you round the corner and take in the horror that stands before you." << endl;
+	cout << "The creature turns towards you, its rotting mounds of flesh tremble as it moves." << endl;
+	cout << "It raises its claws and bares its teeth, ready for combat." << endl; 
+}
+void choice41()
+{
+	do {
+		cout << "You take a moment to collect yourself. Would you like to proceed?\n 1: Yes 2: No";
+		cin >> answer;
+	} while (answer == 2);
+	choice4();
+}
+
+
+int main()
+{
+
+	//choice1();
+	
+		//start choice2
+	//choice2();
+	
+	cin >> answer;
+	
+	do {
+		if (answer == 1) {
+			choice21();
+			
+		}
+		else if (answer == 2) {
+			choice22();
+		}
+		cin >> answer;
+	} while (answer == 1);
+	
+	if (answer == 2) choice22();
+	
+	
+	if (answer == 3) {
+		//choice32();
+		goto stop;
+	}
+	
+	
+			
+	cout << "a";
+	cin >> answer;
+	
+	if (answer == 2) {
+		choice23();
+				goto stop;
+		}
+	if (answer == 3) {
+		//choice32();
+		goto stop;
+	}
+
+	
+	cout << "a";
+	cin >> answer;
+		//choice3 = repeat from choice 2 on to jiggle door handle, test this
+	if (answer == 1) choice3();
+	else if (answer == 3) {
+		do {
+			choice32();
+			cin >> answer;
+		} while (answer == 2);
+	}
+	
+	
+stop: choice32();
+
+	cout << "You proceed into the hallway.\n Your eyes slowly adjust to the dim light." << endl;
+	cout << "Torchlight dimly illuminates the walls of the hallway." << endl;
+
+	system("pause");
+
+	cout << "You trace your fingertips on one of the walls. Its cool and smooth to the touch, just like the walls of your room. " << endl;
+
+	system("pause");
+
+	cout << "You proceed down the hallway, alert and aware.Suddenly, something catches your attention" << endl;
+
+	system("pause");
+
+	cout << "A series of squealching, ripping, and chewing sounds echo softly down the hallway." << endl;
+
+	system("pause");
+
+	cout << "As you approach the corner hall, the sounds get louder and more horrific." << endl;
+
+	system("pause");
+
+	cout << "Animalistic grunts and snorts punctuate the chewing. You have a feeling that whatever this is, its not friendly." << endl;
+
+	system("pause");
+
+	cout << "If you turn the corner, you will enter combat."  << endl;
+
+	cout << "Are you ready to take on the beast?" << endl << "1:Yes 2: No" << endl;
+	cin >> answer;
+	if (answer == 1) choice4();
+	else if (answer == 2) choice41();
+
+	battle1();
+	cout << "You've killed the monster! Congratulations!";
+
+
+
+	return 0;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/*
+// ConsoleApplication16.cpp : Defines the entry point for the console application.
+
+//
+
+
+
+#include "stdafx.h"
+
+
+
+
+
+#include <iostream>
+
+using namespace std;
+
+#include <cstdlib>
+
+#include <time.h>
+
+#include <cstring>
+
+
+
+std::string str;
+
+int health = 20;
+
+int newHealth = 40;
+
+int damage, damage2;
+
+int attack();
+
+int battle();
+
+int battle2();
+
+int attack2();
+
+int answer;
+
+int choice1();
+
+int choice2();
+
+int choice3();
+
+int choice4();
+
+int choice5();
+
+int choice51();
+
+int choice52();
+
+
+
+int main()
+
+{
+
+/*cout << "Cold. \nDarkness. \nPain. \n";
+
+system("pause");
+
+cout << "Slowly your senses return to you. \nYour head aches, and you squint your eyes as the room swims into focus.\n ";
+
+system("pause");
+
+cout << "You're lying on the floor of a small room made entirely of smooth stone.\n";
+
+system("pause");
+
+cout << "A small sliver of light slips out from beneath a door directly in front of you.\n";
+
+system("pause");*/
+
+//cout << "Do you stand up?\n1: Yes\n2: No\n";
+
+
+
+//cin >> answer;
+
+
+
+//choice1();
+
+
+
+
+
+
+
+//cout << "You stretch your aching muscles, taking in the room once again.\n";
+
+//cout << "1: Examine the walls\n2: Head towards the door\n";
+
+//cin >> answer;
+
+
+
+
+
+//choice2()
+
+
+
+//choice3();
+
+
+
+
+
+/*cout << "Would you like to proceed? 1: Yes 2: No" << endl;
+
+
+
+cin >> answer;
+
+
+
+//choice4();
+
+
+
+cout << "Torchlight dimly illuminates the walls of the hallway." << endl;
+
+system("pause");
+
+cout << "You trace your fingertips on one of the walls. Its cool and smooth to the touch, just like the walls of your room. " << endl;
+
+system("pause");
+
+cout << "You proceed down the hallway, alert and aware.Suddenly, something catches your attention" << endl;
+
+system("pause");
+
+cout << "A series of squealching, ripping, and chewing sounds echo softly down the hallway." << endl;
+
+system("pause");
+
+cout << "As you approach the corner hall, the sounds get louder and more horrific." << endl;
+
+system("pause");
+
+cout << "Animalistic grunts and snorts punctuate the chewing. You have a feeling that whatever this is, its not friendly." << endl;
+
+system("pause");
+
+cout << "If you turn the corner, you will enter combat.\n Are you ready? 1: Yes 2: No" << endl;
+
+system("pause");
+
+
+
+cin >> answer;
+
+
+
+choice5();
+
+choice52();
+
+
+
+
+
+
+
+
+
+return 0;
+
+}
+
+
+
+
+
+/*int choice1()
+
+{
+
+if (answer == 1) {
+
+cout << "You rise to your feet and brush yourself off. \nThats better.\n";
+
+}
+
+else if (answer == 2) {
+
+cout << "You continue lying on the floor.\n";
+
+do
+
+{
+
+cout << "Do you want to stand up?\n1: Yes\n2: No\n";
+
+cin >> answer;
+
+} while (answer == 2);
+
+cout << "You rise to your feet and brush yourself off. \nThats better.\n";
+
+}
+
+else {
+
+cout << "That is not a vaild value.\n";
+
+}
+
+return 0;
+
+}
+
+
+
+
+
+int choice2()
+
+{
+
+if (answer == 1) {
+
+do
+
+{
+
+cout << "You approach the wall and run your fingers against its smooth surface.\nIt appears that this room has been hewn from pure stone, yet no tool marks mar is surface.\n What would you like to do?\n";
+
+cout << "1: Examine the walls\n2: Head towards the door\n";
+
+cin >> answer;
+
+} while (answer == 1);
+
+}
+
+else if (answer == 2) {
+
+do {
+
+cout << "You quickly make your way to the door. It's splintered wooden surface will, most likely leave you with a few splinters if you touch it.\n What would you like to do?\n";
+
+cout << "1: Examine the walls\n2: Try the door handle\n3: Run your hands along the door\n";
+
+cin >> answer;
+
+} while (answer == 2);
+
+}
+
+return 0;
+
+}
+
+
+
+int choice3()
+
+{
+
+if (answer == 1) {
+
+do
+
+{
+
+cout << "You approach the wall and run your fingers against its smooth surface.\nIt appears that this room has been hewn from pure stone, yet no tool marks mar is surface.\n What would you like to do?\n";
+
+cout << "1: Examine the walls\n2: Head towards the door\n";
+
+cin >> answer;
+
+} while (answer == 1);
+
+}
+
+else if (answer == 2) {
+
+do {
+
+cout << "You jiggle the door handle and, to your suprise, it slowly creaks open.";
+
+cin >> answer;
+
+} while (answer == 2);
+
+}
+
+else if (answer == 3);
+
+{
+
+do {
+
+cout << "You run your hands along the door's rough surface. You have more than a few splinters\n What would you like to do?\n";
+
+cout << "1: Examine the walls\n2:Try the door handle\n3:Run your hands along the door\n";
+
+cin >> answer;
+
+} while (answer == 3);
+
+
+
+}
+
+return 0;
+
+}
+
+
+
+int choice4()
+
+{
+
+if (answer == 1) {
+
+cout << "You proceed into the hallway";
+
+
+
+}
+
+else if (answer == 2) {
+
+do {
+
+cout << "You shut the door and take a breath." << endl;
+
+cout << "do you wish to proceed?" << endl;
+
+cout << "1: Yes 2: No" << endl;
+
+cin >> answer;
+
+}while (answer == 2);
+
+
+
+}
+
+
+
+
+
+return 0;
+
+}
+
+
+
+int choice5() {
+
+
+
+	if (answer == 1) {
+
+		do {
+
+			attack();
+
+			break;
+
+
+
+		} while (health > damage);
+
+
+
+	}
+
+	else if (answer == 2) {
+
+		do {
+
+			cout << "You take a moment to collect yourself \nAre you ready to face the monster\n1: Yes 2: No";
+
+			cin >> answer;
+
+		} while (answer == 2);
+
+	}
+
+
+
+	return 0;
+
+}
+
+
+
+
+
+int battle()
+
+{
+
+	srand(time(0));
+
+
+
+	for (int x = 1; x < 1; x++) {
+
+
+
+		damage = 1 + (rand() % 6);
+
+		cout << " You do " << 1 + (rand() % 6) << " damage!" << endl;
+
+	}
+
+	return 0;
+
+}
+
+int attack()
+
+{
+
+	battle();
+
+	damage = 1 + (rand() % 6);
+
+	health = health - damage;
+
+
+
+
+
+
+
+	return 0;
+
+}
+
+
+
+int choice51()
+
+{
+
+
+
+	if (health <= 0) {
+
+		cout << "The creature, broken and mangled, slumps to the floor.";
+
+	}
+
+	else if (health > 0) {
+
+		cout << "The creature howls in pain as you tear into its flesh" << endl;
+
+		cout << "You did " << damage << "points of damage!" << endl;
+
+
+
+		cout << "would you like to attack again? 1: Yes 2: No" << endl;
+
+		cin >> answer;
+
+		choice52();
+
+		attack2();
+
+	}
+
+
+
+	return 0;
+
+}
+
+
+
+int choice52()
+
+{
+
+	do {
+
+		attack();
+
+		choice51();
+
+		break;
+
+	} while (answer == 1);
+
+
+
+
+
+	return 0;
+
+}
+
+
+
+
+
+
+
+int battle2()
+
+{
+
+	srand(time(0));
+
+
+
+	for (int x = 1; x < 1; x++) {
+
+
+
+		damage = 1 + (rand() % 6);
+
+		cout << " The monster slashes you with its claw.\nIt does " << 1 + (rand() % 6) << " damage!" << endl;
+
+	}
+
+	return 0;
+
+}
+
+int attack2()
+
+{
+
+	battle2();
+
+	damage = 1 + (rand() % 6);
+
+	newHealth = newHealth - damage;
+
+
+
+
+
+
+
+	return 0;
+
+}
+*/
