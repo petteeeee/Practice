@@ -1,0 +1,281 @@
+// ConsoleApplication16.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+
+
+#include <iostream>
+using namespace std;
+#include <cstdlib>
+#include <time.h>
+#include <cstring>
+#include <string>
+#include <vector>
+
+std::string str;
+
+int answer;
+void choice11();
+void choice12();
+void choice13();
+void choice14();
+int attackPlayer();
+int attackDretch1();
+void texture1();
+void choice21();
+void choice22();
+void intoDarkness();
+void intoLight();
+void choice31();
+int playerHealth = 100;
+int monsterHealth = 20;
+int damage, monsterDamage;
+string inventory1[2] = { "Empty", "Empty" };
+int i = 0;
+
+
+//////////////////////////////////items/////////////////////////
+bool BLOODYDAGGER()
+{
+	return attackPlayer() + 5;
+}
+
+void pickupItem() {
+	/*if (answer == 1) {
+	cout << "Which inventory slot would you like to place it in?" << endl << "1: Slot A: " << inventory1[0] << endl << "2: Slot B: " << inventory1[1] << endl;
+	cin >> answer;
+	(answer == 1) ? inventory1[0] = [ITEM] : inventory1[1] = vial;
+	cout << "Your inventory contains: " << inventory1[0] << " " << inventory1[1] << endl;
+	}*/
+}
+
+
+int main()
+{
+	cout << "Cold. \nDarkness. \nPain. \n";
+	system("pause");
+	cout << "Slowly your senses return to you. \nYour head aches, and you squint your eyes as the room swims into focus.\n ";
+	system("pause");
+	cout << "You're lying on the floor of a small room made entirely of smooth stone.\n";
+	system("pause");
+	cout << "A small sliver of light slips out from beneath a door directly in front of you.\n";
+	system("pause");
+	cout << "Do you stand up?\n1: Yes\n2: No\n";
+
+	cin >> answer;
+
+	choice11();
+
+
+	cout << "What would you like to do?\n1: Examine the walls\n2: Approach the door\n";
+	cin >> answer;
+
+	choice12();
+
+	cin >> answer;
+
+	choice13();
+
+	cin >> answer;
+
+	choice14();
+
+	cout << "Torchlight dimly illuminates the walls" << endl;
+	system("pause");
+	cout << "You trace your fingertips on one of the walls. Its cool and smooth to the touch, just like the walls of your room. " << endl;
+	system("pause");
+	cout << "You proceed down the hallway, alert and aware.Suddenly, something catches your attention" << endl;
+	system("pause");
+	cout << "A series of squealching, ripping, and chewing sounds echo softly down the hallway." << endl;
+	system("pause");
+	cout << "As you approach the corner hall, the sounds get louder and more horrific." << endl;
+	system("pause");
+	cout << "Animalistic grunts and snorts punctuate the chewing. You have a feeling that whatever this is, its not friendly." << endl;
+	system("pause");
+	cout << "If you turn the corner, you will enter combat.\n Are you ready? 1: Yes 2: No" << endl;
+
+	cin >> answer;
+
+	if (answer == 2) {
+		do {
+			cout << "You take a deep breath, are you ready?\n1: Yes\n2: No";
+			cin >> answer;
+		} while (answer == 2);
+	}
+	if (answer == 1) {
+		attackDretch1();
+		if (answer == 1) {
+			attackPlayer();
+
+		}
+
+		cout << "You wipe your blood covered hands on your shirt, and take a look around.\nTo your suprise you notice a human arm sticking out from beneath the mangled corpse of the creature.\nDo you wish to investigate?\n1: Yes\n2: No\n";
+		choice21();
+		cin >> answer;
+
+		choice21();
+		cin >> answer;
+		stop:
+		choice22();
+		cin >> answer;
+		if (answer == 1) {
+			intoLight();
+		}
+		else if (answer == 2) {
+			intoDarkness();
+			choice31();
+			cin >> answer;
+			if (answer == 1) goto stop;
+		}
+		return 0;
+	}
+
+/*Branch 1: Player decends into the darkness */
+void intoDarkness() {
+
+}
+/*Branch 2: Player ascends into the Light*/
+void intoLight() {
+
+}
+
+
+////////////////////////choices for the beginning/////////////////////////////////////////////////////////////////
+void choice11() {
+	string choice1[2] = { "You rise to your feet and brush yourself off. \nThats better.\n", "You continue lying on the floor\nDo you want to stand up ? \n1 : Yes\n2 : No\n", };
+
+	if (answer == 2) {
+		do {
+			(answer == 2) ? (cout << choice1[1]) : (cout << choice1[2]);
+			cin >> answer;
+		} while (answer == 2);
+	}
+
+	if (answer == 1) cout << choice1[0] << endl;
+}
+
+void choice12() {
+	string choice2[2] = { "You approach the wall and run your fingers against its smooth surface.\nIt appears that this room has been hewn from pure stone, yet no tool marks mar is surface.\n What would you like to do?\n 1: Examine the walls\n2: Head towards the door\n",
+		"You quickly make your way to the door. It's splintered wooden surface will, most likely leave you with a few splinters if you touch it.\n What would you like to do?\n1: Run your hands along the door\n2: Try the door handle\n" };
+
+
+	if (answer == 1) {
+		do {
+			cout << choice2[0] << endl;
+			cin >> answer;
+		} while (answer == 1);
+	}
+	cout << choice2[1];
+
+}
+void choice13() {
+	string choice3[2] = { "You run your hands along the door's rough surface. You have more than a few splinters\n What would you like to do?\n1: Run your hands along the door\n2: Try the door handle\n",
+		"You jiggle the door handle, and to your suprise, it's open!\nWould you like to proceed?\n 1: Yes\n2:No\n" };
+	if (answer == 1) {
+		do {
+			cout << choice3[0] << endl;
+			cin >> answer;
+		} while (answer == 1);
+	}
+	cout << choice3[1] << endl;
+}
+
+
+void choice14() {
+
+	string choice4[2] = { "You proceed into the hallway, ready to face what is to come.", "You take a moment to steel yourself, before opening the door.\n Do you proceed?\n 1: Yes\n2: No\n" };
+	if (answer == 2) {
+		do {
+			cout << choice4[1]<< endl;
+			cin >> answer;
+		} while (answer == 2);
+	}
+	cout << choice4[0] << endl;
+}
+
+int attackPlayer() {
+	srand(time(0));
+	do {
+		damage = rand() % 6 + 1; //+ inventory1[0]
+		cout << "You did" << damage << " damage!" << endl;
+		monsterHealth = monsterHealth - damage;
+		if (monsterHealth <= 0) {
+			cout << "The creature crumples to the floor in a pile of bruised and bloody flesh.\nYou've defeated the monster!" << endl;
+			break;
+		}
+		if (playerHealth <= 0) {
+			cout << "You have died.";
+			break;
+		}
+		texture1();
+		i++;
+		attackDretch1();
+
+
+	} while (answer == 1);
+	return 0;
+}
+///////////////////////////////////////first battle//////////////////////////////////////////////////////
+int attackDretch1() {
+	srand(time(0));
+	do {
+		monsterDamage = rand() % 10 + 1;
+		playerHealth = playerHealth - monsterDamage;
+		cout << "The monster attacks you! You take " << monsterDamage << " damage!" << endl;
+		cout << "You have " << playerHealth << " health" << endl;
+		cout << "Would you like to attack?\n 1: Yes\n2: No" << endl;
+		cin >> answer;
+		return 0;
+	} while (answer == 1);
+}
+void texture1() {
+	if (i == 0) cout << "You dodge one of the monster's claws, but the other slashes your left thigh.\nIts going to leave a rad scar" << endl;
+	if (i == 1) cout << "The monster lunges at you, its massive claw grazes your chest, tearing your shirt open. Blood drips from the wound" << endl;
+	if (i == 2) cout << "The beast lets out a blood curdling scream, spittle flying from its open maw as you pummel it with your fists." << endl;
+	if (i == 3) cout << "You lunge forward and rip at the monster with your nails, it screams as you rip its skin open.\nBlood coats your hands." << endl;
+	if (i == 4) cout << "It batters you with its claws, ripping your shoulder open. You grit your teeth against the pain." << endl;
+	if (i == 5) cout << "The monster's breath grows labored as you punch it over and over and over again.\nYou feel one of its ribs shatter beneath as you pummel it" << endl;
+	if (i == 6) cout << "You punch it, again, the monster coughs up blood." << endl;
+}
+
+void choice21() {
+	string choice5[2] = {"You heave the remains of the creature onto it's side, exposing the body beneath.\n What's left of a woman, clad in black robes, her torso torn into pieces lies in front of you.\n Would you like to search her?\n 1: Yes\n2: No\n","It's better to leave it as is.\nYouve been through enough today.\n"};
+	string choice6[2] = { "Her long silver hair is obscuring your view of her face. You brush it aside, revealing two bloody sockets where her eyes used to be.\nHer abdomen is a bloody heap of intestines and viscera, much of it consumed by the creature.\nA glint of gold in the gore catches your eye.\nYou take a deep breath and reach in, pulling out a BLOODY DAGGER.\nIts golden handle is encrusted with jewels, it feels good in your hand.\nWould you like to take it?\n1: Yes\n2: No" };
+	if (answer == 1) {
+		do {
+			cout << choice5[0];
+			cin >> answer;
+			if (answer == 2) break;
+			if (answer == 1) cout << choice6[0] << endl;
+			cin >> answer;
+			if (answer == 2) break;
+			if (answer == 1) {
+				cout << "BLOODY DAGGER increases your attack by 5" << endl;
+				cout << "Which inventory slot would you like to place it in?" << endl << "1: Slot A: " << inventory1[0] << endl << "2: Slot B: " << inventory1[1] << endl;
+				cin >> answer;
+				(answer == 1) ? inventory1[0] = { "BLOODY DAGGER" } : inventory1[1] = { "BLOODY DAGGER" };
+				cout << "Your inventory contains: " << inventory1[0] << " " << inventory1[1] << endl;
+				i++;
+			}
+		} while (i == 0);
+		
+	}
+	 cout << "You leave the body and start down the hallway.\n"; 
+}
+void choice22() {
+	string choice6[1] = {"Shaking off the lingering disgust, you focus your attention on the tunnel in front of you.\nTo your suprise you feel a cool breeze brush your face from further up the tunnel.\nYou rush forward, searching for the source, and approach a fork in the tunnel.\nThe one on the left is well lit and curves upward.\nThe one on the right decends into darkness, but you can feel that same cool breeze emanating from it.\nWhich one would you like to take?\n1: The right\n2: The left\n  "};
+	cout << choice6[0] << endl;
+}
+///////////////////////////////////////choices for descent into darkness////////////////////////////////////////////////////////////////////////
+void choice31() {
+	cout << "You take the dark path, into the unknown" << endl;
+	cout << "The dim hallway twists and turns into darkness, getting colder and colder as you move along.\nYou run your fingers along the walls, and you notice small, round holes beginning to appear every couple inches\n.You begin walking quicker, and the holes get larger and larger.\nYou notice the cool breeze begins to whistle out of the larger holes, blowing your hair into your eyes.\nBut you continue to press forward.\n";
+	cout << "Out of the corner of your eye, you spot something in one of the larger holes near the floor.\n Do you wish to examine it?\n1: Yes\n2: No";
+	cin >> answer;
+	string choice311[2] = { "You kneel down and press your eye against the hole, and to your horror, another eye, bloodshot with a burning red iris, stares back at you.\n You stagger back against the wall, hand accidentily pressing into one of the larger holes. Your hand brushes something wet and squishy.\n A feeling of dawning horror engulfs you as you realize your situation.\nIn each of the holes, lies an eye.\n And theyre all staring right at you.\n Do you wish to turn back?\n1: Yes\n2: No\n ", "You chose to ignore it and continue down the hallway.\nSome things are better left unexplored\n" };
+	if (answer == 1)cout << choice311[0] << endl;
+	if (answer == 2) cout << choice311[1] << endl;
+}
+void choice32() {
+	cout << ""
+}
